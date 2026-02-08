@@ -8,6 +8,15 @@ Version strings conform to the `Semantic Versioning`_ specification,
 ..  _Semantic Versioning: https://semver.org/
 
 
+Version 2.2.4.2
+================
+
+:Released: 2026-02-08
+:Maintainer: Richard Offer <richard@whitequeen.com>
+
+Migrate pkg_resources to importlib/metadata now that 3.12 has dropped it
+
+
 Version 2.2.4.1
 ================
 

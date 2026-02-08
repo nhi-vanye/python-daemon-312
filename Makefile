@@ -10,7 +10,7 @@
 # Makefile for this project.
 
 SHELL = /bin/bash
-PATH = /usr/bin:/bin
+#PATH = /usr/bin:/bin
 
 # Variables that will be extended by module include files.
 GENERATED_FILES :=

@@ -14,7 +14,7 @@ from __future__ import (absolute_import, unicode_literals)
 import datetime
 import json
 
-import pkg_resources
+import importlib.metadata
 
 __metaclass__ = type
 
@@ -41,16 +41,11 @@ def get_distribution_version_info(filename=version_info_filename):
             }
 
     try:
-        distribution = pkg_resources.get_distribution(distribution_name)
-    except pkg_resources.DistributionNotFound:
-        distribution = None
+        distribution = importlib.metadata.distribution(distribution_name)
+        return distribution.metadata.json
+    except importlib.metadata.PackageNotFoundError:
+        return {}
 
-    if distribution is not None:
-        if distribution.has_metadata(filename):
-            content = distribution.get_metadata(filename)
-            version_info = json.loads(content)
-
-    return version_info
 
 
 version_info = get_distribution_version_info()
@@ -109,7 +104,7 @@ def make_year_range(begin_year, end_date=None):
 
 
 copyright_year_begin = "2001"
-build_date = version_info['release_date']
+build_date = version_info.get('release_date')
 copyright_year_range = make_year_range(copyright_year_begin, build_date)
 
 copyright = "Copyright © {year_range} {author} and others".format(
