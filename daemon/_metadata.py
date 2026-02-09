@@ -44,7 +44,7 @@ def get_distribution_version_info(filename=version_info_filename):
         distribution = importlib.metadata.distribution(distribution_name)
         return distribution.metadata.json
     except importlib.metadata.PackageNotFoundError:
-        return {}
+        return version_info
 
 
 
